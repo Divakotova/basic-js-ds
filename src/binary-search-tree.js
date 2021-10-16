@@ -15,8 +15,8 @@ module.exports = class BinarySearchTree {
   }
 
   add(data) {
-    this.roots = addData(this.roots, data)
-    function addData(node, data) {
+    this.roots = addWithin(this.roots, data)
+    function addWithin(node, data) {
       if (!node) {
         return new Node(data)
       }
@@ -24,17 +24,17 @@ module.exports = class BinarySearchTree {
         return node
       }
       if (data < node.data) {
-        node.left = addData(node.left, data)
+        node.left = addWithin(node.left, data)
       } else {
-        node.right = addData(node.right, data)
+        node.right = addWithin(node.right, data)
       }
       return node
     }
   }
 
   has(data) {
-    return searchData(this.roots, data)
-    function searchData(node, data) {
+    return searchWithin(this.roots, data)
+    function searchWithin(node, data) {
       if (!node) {
         return false
       }
@@ -42,16 +42,16 @@ module.exports = class BinarySearchTree {
         return true
       }
       if (data < node.data) {
-        return searchData(node.left, data)
+        return searchWithin(node.left, data)
       } else {
-        return searchData(node.right, data)
+        return searchWithin(node.right, data)
       }
     }
   }
 
   find(data) {
-    return searchData(this.roots, data)
-    function searchData(node, data) {
+    return searchWithin(this.roots, data)
+    function searchWithin(node, data) {
       if (!node) {
         return null
       }
@@ -59,9 +59,9 @@ module.exports = class BinarySearchTree {
         return node
       }
       if (data < node.data) {
-        return searchData(node.left, data)
+        return searchWithin(node.left, data)
       } else {
-        return searchData(node.right, data)
+        return searchWithin(node.right, data)
       }
     }
   }
